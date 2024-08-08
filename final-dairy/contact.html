@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+        /* General Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Arial", sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Background Image Wrapper */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("images/cow.jpg") no-repeat center center fixed;
+            background-size: cover;
+            filter: blur(8px); /* Apply blur effect to the background image */
+            z-index: -1; /* Place the background behind other content */
+        }
+
+        /* Container Styles */
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2.8rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Paragraph */
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Form Group */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        /* Labels */
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        /* Inputs and Textarea */
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            font-size: 1rem;
+            color: #333;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #63a4ff;
+            box-shadow: 0 0 5px rgba(99, 164, 255, 0.5);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Submit Button */
+        input[type="submit"] {
+            background-color: #63a4ff;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4183c4;
+            transform: scale(1.05);
+        }
+
+        /* Home Button */
+        .home-btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px; /* Rounded corners */
+            font-size: 0.9rem; /* Slightly smaller text */
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
+
+        .home-btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .home-btn:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4); /* Focus ring */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            input[type="submit"],
+            .home-btn {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <!-- Blurred Background Image -->
+
+    <div class="container">
+        <h1>Contact Form</h1>
+        <p>Please fill out the fields below to get in touch with us.</p>
+
+        <form action="contact_form_handler.php" method="post">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Your full name"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter valid email address"
+                    required
+                />
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    cols="30"
+                    rows="5"
+                    placeholder="Your message"
+                ></textarea>
+            </div>
+            <input type="submit" value="Send" />
+        </form>
+
+        <a href="main.html" class="home-btn">Home</a>
+    </div>
+</body>
+</html>

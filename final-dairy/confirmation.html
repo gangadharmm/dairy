@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Submitted</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #63a4ff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4183c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="status-message"></h1>
+        <p id="details"></p>
+        <a href="main.html" class="btn">Return to Main Page</a>
+    </div>
+
+    <script>
+        // Retrieve the query parameters
+        const params = new URLSearchParams(window.location.search);
+        const status = params.get('status');
+        const name = params.get('name');
+        const email = params.get('email');
+        const message = params.get('message');
+
+        const statusMessage = document.getElementById('status-message');
+        const details = document.getElementById('details');
+
+        if (status === 'success') {
+            statusMessage.textContent = 'Your request has been submitted successfully!';
+            details.innerHTML = `
+                <strong>Name:</strong> ${decodeURIComponent(name)} <br>
+                <strong>Email:</strong> ${decodeURIComponent(email)} <br>
+                <strong>Message:</strong> <br>${decodeURIComponent(message)}
+            `;
+        } else {
+            statusMessage.textContent = 'There was an error submitting your request.';
+            details.textContent = decodeURIComponent(message);
+        }
+    </script>
+</body>
+</html>

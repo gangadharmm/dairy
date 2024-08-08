@@ -1,0 +1,152 @@
+/* Reset some default styles */
+body, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  padding: 0; /* Remove padding from body */
+  margin: 0; /* Remove margin from body */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the start to make room at the top */
+  min-height: 100vh; /* Ensure body takes up at least the full viewport height */
+  box-sizing: border-box; /* Ensure padding and border are included in element's total width and height */
+  background: url('../images/cow.jpg') no-repeat center center fixed; /* Set fixed background image */
+  background-size: cover; /* Ensure background image covers the viewport */
+  overflow: hidden; /* Prevent body from scrolling */
+}
+
+/* Ensure content is above the blurred background */
+.container {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding: 40px 20px 20px; /* Add 40px padding to the top */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Maximum width for larger screens */
+  width: 100%; /* Full width on smaller screens */
+  box-sizing: border-box;
+  max-height: 80vh; /* Adjust max height as needed */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+/* Header styles */
+h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form layout */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -10px;
+}
+
+.col-50, .col-75 {
+  flex: 0 0 100%;
+  max-width: 100%;
+  padding: 10px;
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+/* Form element styles */
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and border in the width calculation */
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width button */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.icon-container {
+  margin-bottom: 15px;
+  text-align: center; /* Center icons */
+}
+
+.icon-container i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Full width button */
+  box-sizing: border-box; /* Include padding in the width calculation */
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .col-50, .col-75 {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding: 10px;
+      box-sizing: border-box; /* Ensure box-sizing applies to responsive elements */
+  }
+}
+
+@media (max-width: 480px) {
+  h3 {
+      font-size: 24px;
+  }
+  input[type="text"], 
+  input[type="email"], 
+  input[type="password"], 
+  input[type="submit"] {
+      font-size: 14px;
+  }
+}

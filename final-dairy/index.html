@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login to Find Your Account</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+        /* Reset some default styles */
+        body,
+        h2,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Apply general styling to the body */
+        body {
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Hide scrollbars to enhance blur effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative; /* Establish relative positioning context */
+        }
+
+        /* Background blur effect */
+        .background-blur {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./images/cow.jpg'); /* Ensure correct relative path */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keep background image fixed while scrolling */
+            filter: blur(8px); /* Apply blur effect */
+            z-index: -1; /* Place behind content */
+        }
+
+        /* Overlay to darken the blurred background */
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5); /* Slightly transparent white overlay */
+            z-index: -1; /* Place behind content */
+        }
+
+        /* Container styling */
+        .container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for floating effect */
+            max-width: 500px;
+            width: 100%;
+            z-index: 1; /* Ensure content is on top */
+        }
+
+        /* Header styling */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #333;
+        }
+
+        /* Button styling */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        /* Form input styling */
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Bottom container styling */
+        .bottom-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .bottom-container .btn {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .bottom-container .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hide elements on smaller screens */
+        .hide-md-lg {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .hide-md-lg {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div> <!-- Background blur effect -->
+    <div class="background-overlay"></div> <!-- Overlay to darken the blurred background -->
+
+    <div class="container">
+        <h2>Sign In</h2> <!-- Changed heading to "Sign In" -->
+        <form onsubmit="handleLogin(event)">
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <input type="submit" value="Login" />
+        </form>
+        <div class="bottom-container">
+            <a href="signup.html" class="btn btn-primary">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="username"]').value;
+            const password = document.querySelector('input[name="password"]').value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "login.php", true);
+            xhr.setRequestHeader(
+                "Content-Type",
+                "application/x-www-form-urlencoded"
+            );
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+
+                    if (response.success) {
+                        window.location.href = "main.html";
+                    } else {
+                        alert("Email or password does not match.");
+                    }
+                } else {
+                    alert("An error occurred. Please try again.");
+                }
+            };
+
+            xhr.send(
+                `username=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            );
+        }
+    </script>
+</body>
+</html>

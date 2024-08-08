@@ -1,0 +1,128 @@
+/* Apply a reset for margins, paddings, and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General body styles */
+body {
+    font-family: 'Merriweather', serif;
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    background-color: #f4f4f4;
+    position: relative; /* Needed for positioning the pseudo-element */
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* About Us Section */
+.about-us {
+    width: 100%;
+    display: flex;
+    color: #fff;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh; /* Ensure the section covers at least the viewport height */
+}
+
+.about-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/cow.jpg') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(8px); /* Adjust blur amount here */
+    z-index: -1; /* Place the pseudo-element behind the main content */
+}
+
+.about-us .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background-color: #f5f1f1;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.card h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    font-size: 28px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* Contact Us Section */
+.contact-us {
+    background-color: #fff;
+    padding: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.contact-us h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.contact-us p {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+footer .social-media {
+    margin: 10px 0;
+}
+
+.social {
+    color: #fff;
+    margin: 0 15px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 767px) {
+    .card {
+        padding: 20px;
+    }
+}

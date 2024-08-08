@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address</title>
+    <link rel="stylesheet" href="css/address.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Delivery Address</h1>
+        <hr>
+        <h3>Enter your Address</h3>
+        
+        <form action="save_address.php" method="POST">
+            <p>
+                <select name="city">
+                    <option value="Dehradun">Dehradun</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Great Noida">Great Noida</option>
+                    <option value="Lucknow">Lucknow</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Haridwar">Haridwar</option>
+                </select>
+            </p>
+            
+            <p>
+                <input type="text" name="pin_code" placeholder="Pin Code">
+            </p>
+            
+            <p>
+                <input type="text" required name="address" placeholder="Enter Your Full Address">
+            </p>
+            
+            <p>
+                <input type="text" required name="society_name" placeholder="Society Name">
+            </p>
+            
+            <p>
+                <input type="text" required name="house_number" placeholder="House/Flat Number">
+            </p>
+            
+            <p>
+                <input type="text" required name="block" placeholder="Block">
+            </p>
+            
+            <p>
+                <input type="submit" value="Save Address">
+            </p>
+        </form>
+    </div>
+</body>
+</html>
